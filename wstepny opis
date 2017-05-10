@@ -1,0 +1,15 @@
+Program będzie grą rpg. Na podstawie odpowiedzi na 4-5 pytań zostaje tworzona postać (imię, rasa, klasa, zdolność, wartość ataku, wartość obrony,stan zdrowia). Tak stworzoną postacią należy przejść przez trzy wyzwania aby dojść do skarbu, co jest warunkiem wygranej. Przegrana następuje w momencie śmierci postaci. Projekt będzie wykonywany w formie ConsoleAplication. 
+Po stworzeniu postaci należy przejść przez trzy wyzwania:
+*decyzja o użyciu lub nie używaniu losowo zwykłego/przeklętego/pomocnego przedmiotu
+*spotkanie z losowym wrogiem (przy odpowiednim zestawieniu wróg-postać walka może być banalna lub trudna)
+*odgadnięcie losowej zagadki
+
+W programie zostaną zastosowane co najmniej następujące klasy:
+*klasa abstrakcyjna Monster, uwzględniająca rodzaje akcji i statystyk przeciwników
+*klasy dla poszczególnych rodzajów przeciwników (Dragon ,ElvenMage ,Gnome ,Guardian ,Soldier), określające sposób wykonania akcji oraz liczbowe statystyki
+*klasa Character lub poszczególne klasy, gdzie postać gracza jest tworzona w oparciu o szablon rasy/klasy
+
+System walki:
+System walki jest oparty o liczby pseudolosowe.
+Obowiązują statystyki: atak i obrona. Na potrzeby danego spotkania wartość ataku jest równa różnicy wartości ataku postaci i obrony przeciwnika, zaś wartość obrony jest równa różnicy wartości obrony postaci i ataku przeciwnika. Gdy postać atakuje,  uzyskana pseudolosowa liczba (od 2 do 12) jest porównywana z ostateczną wartością ataku. Jeżeli liczba pseudolosowa jest mniejsza niż ostateczna wartość ataku, atak kończy się sukcesem. Obrona działa analogicznie.
+Walka odbywa się w sposób turowy. 
