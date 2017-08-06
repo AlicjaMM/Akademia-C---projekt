@@ -1,0 +1,30 @@
+Alicja Maœlanka - projekt realizowanyw ramach Akademii C#
+
+	Tematem projektu jest krótka gra tekstowa typu RPG, która polega na stworzeniu postaci oraz przejœciu za jej pomoc¹ wyzwañ postawionych na drodze do skarbu.
+
+	W projekcie zosta³y zastosowane miêdzy innymi:
+- Klasa abstrakcyjna Monster, po której dziedzicz¹ wszystkie klasy potworów. Klasa Monster okreœla podstawowe czynnoœci, które mo¿e wykonywaæ potwór, ale nie precyzuje sposobu ich dzia³ania. W celu okreœlenia w jaki sposób potwór wykonuje dan¹ akcjê wykorzystywany jest polimorfizm dynamiczny - metody abstrakcyjne dziedziczone po klasie Monster s¹ przes³aniane przez metody wykorzystywane przez poszczególne potwory ( 'override').
+- Enumy, zastosowane w celu zwiêkszenia czytelnoœci kodu. S¹ one u¿yte w celu przedstawienia: stanów zdrowia postaci i potworów, rodzajów napotkanych potworów, ras/zdolnoœci/ profesji postaci gracza oraz rodzajów ataków dostêpnych zarówno postaci gracza, jak i  potworom.
+- Hermetyzacja: dziêki u¿yciu modyfikatorów dostêpu 'private' oraz 'protected' dostêp do poszczególnych danych jest ograniczony.
+	Ponadto kod jest tak przedstawiony aby by³ on czytelny. D³u¿sze sekwencje tekstowe s¹ wczytywane z plików txt, a wiêkszoœæ zastosowanych metod mieœci siê naraz na jednym ekranie.
+
+Zasada dzia³ania projektu
+	 Gra dzia³a na ogó³ w sposób sekwencyjny: pomyœlne przejœcie przez gracza jednego problemu kieruje go do nastêpnego i tak do momentu osi¹gniêcia celu (skarbca) lub œmierci postaci.
+
+Funkcjonalnoœci
+	Gracz ma mo¿liwoœæ stworzenia postaci poprzez nadanie jej imienia/przydomku oraz odpowiedzi na pytania a przez to wygenerowanie pozosta³ych cech postaci (rasa, klasa/profesja, wartoœæ ataku, wartoœæ obrony, rodzaj ataku).
+	Nastêpnie wp³ywa on na stan postaci wybieraj¹c poszczególne œcie¿ki fabularne, a tak¿e mo¿e zacz¹æ grê od nowa w przypodku og³oszenia pora¿ki lub zwyciêstwa.
+
+Mechanika walki
+	W ogólnym przypadku na pocz¹tku walki wykonywany jest przez potwora rzut na inicjatywê. Je¿eli rzut mu siê powiedzie (kryteria takie same jak dla rzutu na atak opisanego poni¿ej), atakuje on jako pierwszy.  Wyj¹tkiem jest gnom, który udanym rzutem na inicjatywê neguje dodatkowy atak gracza na pocz¹tku walki, gdy¿ nie posiada on zdolnoœci bojowych.
+	Wyj¹tkowe sytuacje w których rzut na inicjatywê nie jest wykonywany:
+* gracz atakuje budz¹cego siê smoka (si³¹ rzeczy wykonuje atak jako pierwszy)
+* gracz krzyczy widz¹c budz¹cego siê smoka (przera¿ony gracz nie jest w stanie zaatakowaæ pierwszy)
+* gracz opowiada nudn¹ historiê smokowi (nie przygotowuje siê do ataku)
+* gracz atakuje gnoma (gnom nie ma jakiegokolwiek doœwiadczenia w walce)
+* gracz nie ma zdolnoœci Alert i prowokuje maga (jego reakcja jest zbyt gwa³towna)
+* gracz posiada zdolnoœæ Alert i nie zachodz¹ powy¿sze sytuacje
+	W  walce wykonywane s¹ na zmianê akcje ataku i obrony ze strony potwora (w przypadku obrony przyjmujemy atak gracza) dopóki zarówno potwór, jak i gracz ¿yj¹. Kryterium: wynik rzutu + atak potwora >= obrona gracza musi byæ spe³nione aby potwór trafi³ gracza. Czasami mog¹ wyst¹piæ konfiguracje, gdzie gracz mo¿e nie otrzymaæ obra¿eñ pomimo spe³nienia tego warunku (np. postaæ posiadaj¹ca zdolnoœæ Kontrczar walczy z Magiem). Aby postaæ gracza zrani³a potwora musi zostaæ spe³niony warunek:
+wynik rzutu + obrona potwora < atak postaci.
+	Wartoœæ rzutu jest liczb¹ pseudolosow¹ od 2 do 12.
+	
